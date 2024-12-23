@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         // Army creation
@@ -29,6 +32,9 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        Menu startMenu = new Menu("Menu principal", new ArrayList<String>(Arrays.asList("Créer une nouvelle armée", "Modifier une armée existante", "Modifier une faction", "Quitter")), true);
+
+        startMenu.display();
 //        Army humanArmy = new Army("Les Royaumes des Hommes", "Humain", 100);
     }
 }
