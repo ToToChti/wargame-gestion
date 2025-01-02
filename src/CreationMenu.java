@@ -30,7 +30,7 @@ public class CreationMenu {
     }
 
     public boolean waitInputString(Function<String, Boolean> treatInput) {
-        String input = null;
+        String input;
         boolean correct = false;
 
         while (!correct) {

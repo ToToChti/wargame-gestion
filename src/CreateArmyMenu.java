@@ -5,7 +5,7 @@ public class CreateArmyMenu {
     private String armyName;
     private String armyFaction;
     private int armyMaxPoints;
-    private CreationMenu creationMenu;
+    private final CreationMenu creationMenu;
 
     public CreateArmyMenu(Scanner scanner) {
         final ArrayList<WargameInput> inputs = new ArrayList<>();
