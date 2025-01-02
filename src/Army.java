@@ -47,6 +47,10 @@ public class Army {
         return usedPoint;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void displayAll() {
         String separator = "";
         for (int i = 0; i < 20; i++) {
