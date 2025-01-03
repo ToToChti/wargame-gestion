@@ -20,18 +20,7 @@ public class MainMenu extends SelectionMenu {
         );
     }
 
-    public void openMenu() {
-        // Displaying the menu
-        display();
-
-        // Waiting for user answer
-        int answer = waitSelection();
-
-        // Treat user answer
-        treatAnswer(answer);
-    }
-
-    private void treatAnswer(int answer) {
+    protected void treatAnswer(int answer) {
         switch (answer) {
             case 0:
                 System.out.println("Merci d'avoir utilisé Wargame Gestion ! A bientôt...");
@@ -39,12 +28,14 @@ public class MainMenu extends SelectionMenu {
 
             case 1:
                 CreateArmyMenu menu = new CreateArmyMenu(scanner);
-                if (menu.createArmy()) armies.add(menu.getArmy());
+                if (menu.createArmy()) {
+                    armies.add(menu.getArmy());
+                    System.out.println("Armée ajouté avec succès");
+                }
                 openMenu();
                 break;
 
             case 2:
-                // menusList.get("3").openMenu(); // TODO: Change menu id
                 new ArmySelection(scanner, armies);
                 openMenu();
                 break;
@@ -60,6 +51,4 @@ public class MainMenu extends SelectionMenu {
                 throw new InputMismatchException("An error occurred while reading the answer.");
         }
     }
-
-
 }

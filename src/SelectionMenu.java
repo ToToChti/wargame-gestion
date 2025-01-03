@@ -11,11 +11,15 @@ public abstract class SelectionMenu {
         this.title = title;
         this.options = options;
     }
-    public abstract void openMenu();
 
-    public void display() {
+    private void display() {
         // Displaying title
         System.out.printf("\n\n-----> %s <------\n\n", this.title);
+
+        if (this.options.isEmpty()) {
+            System.out.println("Aucune donnée disponible, veuillez créer avant de sélectionner");
+            return;
+        }
 
         // Displaying options
         System.out.println("0. Retour au menu précédent/Quitter");
@@ -24,7 +28,7 @@ public abstract class SelectionMenu {
         }
     }
 
-    public int waitSelection() {
+    private int waitSelection() {
         int choice = 0;
         boolean correct = false;
 
@@ -49,5 +53,20 @@ public abstract class SelectionMenu {
         }
 
         return choice;
+    }
+
+    protected abstract void treatAnswer(int answer);
+
+    public void openMenu() {
+        // Displaying the menu
+        display();
+
+        if (this.options.isEmpty()) return;
+
+        // Waiting for user answer
+        int answer = waitSelection();
+
+        // Treat user answer
+        treatAnswer(answer);
     }
 }

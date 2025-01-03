@@ -17,29 +17,16 @@ public class ArmyActionsMenu extends SelectionMenu {
 
     private static ArrayList<String> createOptions() {
         return new ArrayList<>(
-                Arrays.asList(
-                        "Ajouter un groupe d'unité",
-                        "Sélectionner un groupe d'unité",
-                        "Afficher un groupe d'unité"
-                )
+            Arrays.asList(
+                "Ajouter un groupe d'unité",
+                "Sélectionner un groupe d'unité",
+                "Afficher un groupe d'unité",
+                "Supprimer l'armée sélectionné"
+            )
         );
     }
 
-    public void openMenu() {
-        // Displaying the menu
-        display();
-
-        // Waiting for user answer
-        int answer = waitSelection();
-
-        // 0 mean cancel to previous
-        if (answer == 0) return;
-
-        // Treat user answer
-        treatAnswer(answer);
-    }
-
-    private void treatAnswer(int answer) {
+    protected void treatAnswer(int answer) {
         switch (answer) {
             case 0:
                 System.out.println("|> Retour au menu principal <|");
@@ -63,6 +50,11 @@ public class ArmyActionsMenu extends SelectionMenu {
                     unitGroup.display();
                 }
                 openMenu();
+                break;
+
+            case 4:
+                armies.remove(selectedArmy);
+                System.out.println("Armée supprimé avec succès");
                 break;
 
             default:

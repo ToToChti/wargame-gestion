@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +8,6 @@ public class CreateArmyMenu extends CreationMenu {
     private final ArrayList<WargameInput> inputs;
 
     public CreateArmyMenu(Scanner scanner) {
-
         super(scanner, "Menu création armée");
 
         final ArrayList<WargameInput> constructInputs = new ArrayList<>();

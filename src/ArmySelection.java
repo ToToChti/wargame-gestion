@@ -19,22 +19,11 @@ public class ArmySelection extends SelectionMenu {
         return options;
     }
 
-    public void openMenu() {
-        // Displaying the menu
-        display();
-
-        // Waiting for user answer
-        int answer = waitSelection();
-
-        // 0 mean cancel to previous
-        if (answer == 0) return;
-
-        // Treat user answer
-        treatAnswer(answer);
-    }
-
-    private void treatAnswer(int answer) {
+    protected void treatAnswer(int answer) {
+        if (answer == 0) {
+            System.out.println("|> Retour au menu principal <|");
+            return;
+        }
         new ArmyActionsMenu(scanner, armies, answer - 1);
-        openMenu();
     }
 }

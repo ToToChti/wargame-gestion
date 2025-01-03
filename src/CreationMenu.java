@@ -11,7 +11,7 @@ public class CreationMenu {
         this.title = title;
     }
 
-    public boolean create(ArrayList<WargameInput> inputs) {
+    protected boolean create(ArrayList<WargameInput> inputs) {
         for (int i = 0; i < inputs.size(); i++) {
             // Displaying title
             System.out.printf("\n\n-----> %s <------\n\n", this.title);
@@ -21,13 +21,12 @@ public class CreationMenu {
             System.out.printf("%s (q pour quitter) (%d/%d) :\n", wargameInput.content, i + 1, inputs.size());
 
             // Request input
-
             if (!waitInputString(wargameInput.treatInput)) return false;
         }
         return true;
     }
 
-    public boolean waitInputString(Function<String, Boolean> treatInput) {
+    private boolean waitInputString(Function<String, Boolean> treatInput) {
         String input;
         boolean correct = false;
 
