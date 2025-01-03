@@ -5,22 +5,20 @@ import java.util.function.Function;
 public class CreationMenu {
     public final Scanner scanner;
     private final String title;
-    private final ArrayList<WargameInput> inputs;
 
-    public CreationMenu(Scanner scanner, String title, ArrayList<WargameInput> inputs) {
+    public CreationMenu(Scanner scanner, String title) {
         this.scanner = scanner;
         this.title = title;
-        this.inputs = inputs;
     }
 
-    public boolean create() {
-        for (int i = 0; i < this.inputs.size(); i++) {
+    public boolean create(ArrayList<WargameInput> inputs) {
+        for (int i = 0; i < inputs.size(); i++) {
             // Displaying title
             System.out.printf("\n\n-----> %s <------\n\n", this.title);
 
             // Displaying inputs
-            final WargameInput wargameInput = this.inputs.get(i);
-            System.out.printf("%s (q pour quitter) (%d/%d) :\n", wargameInput.content, i + 1, this.inputs.size());
+            final WargameInput wargameInput = inputs.get(i);
+            System.out.printf("%s (q pour quitter) (%d/%d) :\n", wargameInput.content, i + 1, inputs.size());
 
             // Request input
 

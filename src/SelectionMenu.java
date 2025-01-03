@@ -18,7 +18,7 @@ public abstract class SelectionMenu {
         System.out.printf("\n\n-----> %s <------\n\n", this.title);
 
         // Displaying options
-        System.out.println("0. Retour au menu précédent");
+        System.out.println("0. Retour au menu précédent/Quitter");
         for (int i = 0; i < this.options.size(); ++i) {
             System.out.printf("%d. %s\n", i + 1, this.options.get(i));
         }

@@ -1,26 +1,30 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CreateArmyMenu {
+public class CreateArmyMenu extends CreationMenu {
     private String armyName;
     private String armyFaction;
     private int armyMaxPoints;
-    private final CreationMenu creationMenu;
+    private final ArrayList<WargameInput> inputs;
 
     public CreateArmyMenu(Scanner scanner) {
-        final ArrayList<WargameInput> inputs = new ArrayList<>();
 
-        inputs.add(new WargameInput("Choisissez un nom pour votre armée", input -> {
+        super(scanner, "Menu création armée");
+
+        final ArrayList<WargameInput> constructInputs = new ArrayList<>();
+
+        constructInputs.add(new WargameInput("Choisissez un nom pour votre armée", input -> {
             this.armyName = input;
             return true;
         }));
 
-        inputs.add(new WargameInput("Choisissez la faction ou donnez le nom de votre nouvelle faction si elle n'existe pas encore", input -> {
+        constructInputs.add(new WargameInput("Choisissez la faction ou donnez le nom de votre nouvelle faction si elle n'existe pas encore", input -> {
             this.armyFaction = input;
             return true;
         }));
 
-        inputs.add(new WargameInput("Nombre de points maximal de l'armée", input -> {
+        constructInputs.add(new WargameInput("Nombre de points maximal de l'armée", input -> {
             try {
                 int intInput = Integer.parseInt(input);
 
@@ -38,11 +42,11 @@ public class CreateArmyMenu {
             }
         }));
 
-        creationMenu = new CreationMenu(scanner, "Menu création armée", inputs);
+        inputs = constructInputs;
     }
 
     public boolean createArmy() {
-        return creationMenu.create();
+        return create(inputs);
     }
 
     public Army getArmy() {

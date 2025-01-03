@@ -36,6 +36,7 @@ public class MainMenu extends SelectionMenu {
             case 0:
                 System.out.println("Merci d'avoir utilisé Wargame Gestion ! A bientôt...");
                 break;
+
             case 1:
                 CreateArmyMenu menu = new CreateArmyMenu(scanner);
                 if (menu.createArmy()) armies.add(menu.getArmy());

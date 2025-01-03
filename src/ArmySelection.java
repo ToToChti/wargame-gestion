@@ -34,8 +34,7 @@ public class ArmySelection extends SelectionMenu {
     }
 
     private void treatAnswer(int answer) {
-        final Army army = armies.get(answer - 1);
-        army.displayAll();
-        // TODO : Menu pour une armée spécifique
+        new ArmyActionsMenu(scanner, armies, answer - 1);
+        openMenu();
     }
 }

@@ -51,6 +51,10 @@ public class Army {
         return name;
     }
 
+    public List<UnitGroup> getGroups() {
+        return group;
+    }
+
     public void displayAll() {
         String separator = "";
         for (int i = 0; i < 20; i++) {
