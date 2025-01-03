@@ -8,7 +8,7 @@ public class ArmyActionsMenu extends SelectionMenu {
     private final int selectedArmy;
 
     public ArmyActionsMenu(Scanner scanner, ArrayList<Army> armies, int selectedArmy) {
-        super(scanner, "Que souhaitez-vous faire sur votre armée " + armies.get(selectedArmy).getName() + " ?", createOptions());
+        super(scanner, "Que souhaitez-vous faire sur votre armée \"" + armies.get(selectedArmy).getName() + "\" ?", createOptions());
 
         this.armies = armies;
         this.selectedArmy = selectedArmy;
@@ -20,35 +20,42 @@ public class ArmyActionsMenu extends SelectionMenu {
             Arrays.asList(
                 "Ajouter un groupe d'unité",
                 "Sélectionner un groupe d'unité",
-                "Afficher un groupe d'unité",
+                "Afficher l'armée",
                 "Supprimer l'armée sélectionné"
             )
         );
     }
 
     protected void treatAnswer(int answer) {
+        final Army army = armies.get(selectedArmy);
+
         switch (answer) {
             case 0:
                 System.out.println("|> Retour au menu principal <|");
                 break;
 
             case 1:
-                System.out.println("Cas 1");
-                // GroupCreationMenu groupMenu = new GroupCreationMenu(scanner);
-                // if (menu.createGroup()) armies.get(selectedArmy).add(groupMenu.getGroup());
+                GroupCreationMenu menu = new GroupCreationMenu(scanner);
+                if (menu.createGroup()) {
+                    army.add(menu.getGroup());
+                    System.out.println("Groupe d'unité ajoutée avec succès");
+
+                    // Preselect created UnitGroup
+                    new GroupActionsMenu(scanner, army, army.getGroups().size() - 1);
+                }
+
                 openMenu();
                 break;
 
             case 2:
-                System.out.println("Cas 2");
-                //new GroupSelection(scanner, armies, selectedArmy);
+                new GroupSelection(scanner, army);
+
                 openMenu();
                 break;
 
             case 3:
-                for (UnitGroup unitGroup : armies.get(selectedArmy).getGroups()) {
-                    unitGroup.display();
-                }
+                army.displayAll();
+
                 openMenu();
                 break;
 

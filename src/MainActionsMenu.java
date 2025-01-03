@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class MainMenu extends SelectionMenu {
+public class MainActionsMenu extends SelectionMenu {
     private final ArrayList<Army> armies;
 
-    public MainMenu(Scanner scanner, ArrayList<Army> initialArmies) {
+    public MainActionsMenu(Scanner scanner, ArrayList<Army> initialArmies) {
         super(scanner, "Menu Principal", createOptions());
 
         this.armies = initialArmies;
@@ -27,11 +27,15 @@ public class MainMenu extends SelectionMenu {
                 break;
 
             case 1:
-                CreateArmyMenu menu = new CreateArmyMenu(scanner);
+                ArmyCreationMenu menu = new ArmyCreationMenu(scanner);
                 if (menu.createArmy()) {
                     armies.add(menu.getArmy());
                     System.out.println("Armée ajouté avec succès");
+
+                    // Preselect army created
+                    new ArmyActionsMenu(scanner, armies, armies.size() - 1);
                 }
+
                 openMenu();
                 break;
 

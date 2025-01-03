@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Army {
     private final String name;
     private final String faction;
     private final int maxPoint;
-    private final List<UnitGroup> group;
+    private final ArrayList<UnitGroup> group;
 
     public Army(String name, String faction, int maxPoint) {
         if (name.trim().isEmpty()) {
@@ -51,8 +50,25 @@ public class Army {
         return name;
     }
 
-    public List<UnitGroup> getGroups() {
+    public ArrayList<UnitGroup> getGroups() {
         return group;
+    }
+
+    public UnitGroup getGroup(int index) {
+        if (group.isEmpty()) {
+            throw new IllegalStateException("Aucun groupe d'unités à sélectionner");
+        }
+        if (index < 0 || index >= group.size()) {
+            throw new IndexOutOfBoundsException("Index invalide : " + index + ". Les indices valides sont entre 0 et " + (group.size() - 1) + ".");
+        }
+
+        return group.get(index);
+    }
+
+    public void displayGroups() {
+        for (UnitGroup group : group) {
+            group.display();
+        }
     }
 
     public void displayAll() {
@@ -72,9 +88,7 @@ public class Army {
             System.out.println("Aucun groupe d'unités enregistré.");
         } else {
             System.out.println("Est constitué de : ");
-            for (UnitGroup group : group) {
-                group.display();
-            }
+            displayGroups();
         }
 
         System.out.println(separator);

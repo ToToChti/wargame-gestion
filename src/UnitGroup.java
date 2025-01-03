@@ -1,10 +1,9 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class UnitGroup {
     private final String name;
     private int groupCost;
-    private final List<Unit> units;
+    private final ArrayList<Unit> units;
 
     public UnitGroup(String name) {
         if (name.trim().isEmpty()) {
@@ -14,6 +13,14 @@ public class UnitGroup {
         this.name = name;
         this.groupCost = 0;
         this.units = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Unit> getUnits() {
+        return units;
     }
 
     public int getGroupCost() {

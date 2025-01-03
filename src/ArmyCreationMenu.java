@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CreateArmyMenu extends CreationMenu {
+public class ArmyCreationMenu extends CreationMenu {
     private String armyName;
     private String armyFaction;
     private int armyMaxPoints;
     private final ArrayList<WargameInput> inputs;
 
-    public CreateArmyMenu(Scanner scanner) {
+    public ArmyCreationMenu(Scanner scanner) {
         super(scanner, "Menu création armée");
 
         final ArrayList<WargameInput> constructInputs = new ArrayList<>();

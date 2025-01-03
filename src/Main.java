@@ -57,7 +57,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        new MainMenu(scanner, initialArmies);
+        new MainActionsMenu(scanner, initialArmies);
 
         scanner.close();
     }
