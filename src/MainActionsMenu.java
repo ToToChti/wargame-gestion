@@ -7,7 +7,7 @@ public class MainActionsMenu extends SelectionMenu {
         super(scanner, "Menu Principal", createOptions());
 
         this.armies = initialArmies;
-        this.openMenu();
+        this.openMenu(true);
     }
 
     private static ArrayList<String> createOptions() {
@@ -36,19 +36,19 @@ public class MainActionsMenu extends SelectionMenu {
                     new ArmyActionsMenu(scanner, armies, armies.size() - 1);
                 }
 
-                openMenu();
+                openMenu(true);
                 break;
 
             case 2:
                 new ArmySelection(scanner, armies);
-                openMenu();
+                openMenu(true);
                 break;
 
             case 3:
                 for (Army army : armies) {
                     army.displayAll();
                 }
-                openMenu();
+                openMenu(true);
                 break;
 
             default:

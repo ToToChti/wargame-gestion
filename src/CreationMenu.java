@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.function.Function;
+import java.util.*;
+import java.util.function.*;
 
 public class CreationMenu {
     public final Scanner scanner;
@@ -13,12 +12,14 @@ public class CreationMenu {
 
     protected boolean create(ArrayList<WargameInput> inputs) {
         for (int i = 0; i < inputs.size(); i++) {
-            // Displaying title
-            System.out.printf("\n\n-----> %s <------\n\n", this.title);
+            if(i == 0) {
+                // Displaying title
+                System.out.printf("\n\n䷀䷀䷀䷀䷀䷀ %s ䷀䷀䷀䷀䷀䷀\n", this.title);
+            }
 
             // Displaying inputs
             final WargameInput wargameInput = inputs.get(i);
-            System.out.printf("%s (q pour quitter) (%d/%d) :\n", wargameInput.content, i + 1, inputs.size());
+            System.out.printf("\n%s (q pour quitter) (%d/%d) :\n> ", wargameInput.content, i + 1, inputs.size());
 
             // Request input
             if (!waitInputString(wargameInput.treatInput)) return false;

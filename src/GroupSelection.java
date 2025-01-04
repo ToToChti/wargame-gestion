@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class GroupSelection extends SelectionMenu {
     private final int selectedArmy;
@@ -23,7 +22,7 @@ public class GroupSelection extends SelectionMenu {
 
     protected void treatAnswer(int answer) {
         if (answer == 0) {
-            System.out.println("|> Retour au menu précédent <|");
+            System.out.println("\n|> Retour au menu précédent <|");
             return;
         }
         new GroupActionsMenu(scanner, armies, selectedArmy, answer - 1);

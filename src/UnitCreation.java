@@ -45,7 +45,7 @@ public class UnitCreation extends CreationMenu {
             }
         }));
 
-        if(unitType == UnitType.Vehicle && vehicleType == VehicleType.TRANSPORT) {
+        if(unitType == UnitType.Vehicule && vehicleType == VehicleType.TRANSPORT) {
             constructInputs.add(new WargameInput("Capacité de transport", input -> {
                 try {
                     int intInput = Integer.parseInt(input);
@@ -69,13 +69,13 @@ public class UnitCreation extends CreationMenu {
     }
 
     public Unit getUnit() {
-        if(unitType.equals(UnitType.Vehicle) && vehicleType.equals(VehicleType.TRANSPORT)) {
+        if(unitType.equals(UnitType.Vehicule) && vehicleType.equals(VehicleType.TRANSPORT)) {
             return new Vehicle(unitName, unitCost, transportCapacity);
         }
-        else if(unitType == UnitType.Vehicle) {
+        else if(unitType == UnitType.Vehicule) {
             return new Vehicle(unitName, unitCost, vehicleType);
         }
-        else if(unitType == UnitType.Infantry) {
+        else if(unitType == UnitType.Soldat) {
             return new Infantry(unitName, unitCost, infantryType);
         }
 

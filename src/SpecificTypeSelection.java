@@ -15,13 +15,13 @@ public class SpecificTypeSelection extends SelectionMenu {
     private static ArrayList<String> createOptions(UnitType unitType) {
         ArrayList<String> options = new ArrayList<>();
 
-        if(unitType == UnitType.Vehicle) {
+        if(unitType == UnitType.Vehicule) {
             for(VehicleType type : VehicleType.values()) {
                 options.add(type.name());
             }
         }
 
-        else if(unitType == UnitType.Infantry) {
+        else if(unitType == UnitType.Soldat) {
             for(InfantryType type : InfantryType.values()) {
                 options.add(type.name());
             }
@@ -37,11 +37,11 @@ public class SpecificTypeSelection extends SelectionMenu {
         }
         else {
             switch (unitType) {
-                case Vehicle:
+                case Vehicule:
                     vehicleType = VehicleType.values()[answer - 1];
                     break;
 
-                case Infantry:
+                case Soldat:
                     infantryType = InfantryType.values()[answer - 1];
                     break;
             }
@@ -49,10 +49,14 @@ public class SpecificTypeSelection extends SelectionMenu {
     }
 
     public String getSpecificType() {
-        return switch (unitType) {
-            case Vehicle -> vehicleType.name();
-            case Infantry -> infantryType.name();
-        };
+        if(vehicleType != null || infantryType != null) {
+            return switch (unitType) {
+                case Vehicule -> vehicleType.name();
+                case Soldat -> infantryType.name();
+            };
+        }
+
+        return null;
 
     }
 }

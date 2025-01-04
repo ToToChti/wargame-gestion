@@ -8,10 +8,10 @@ public class Infantry extends Unit {
 
     public String getInfantryName() {
         return switch (infantryType) {
-            case SOLDIER -> "Soldat";
-            case HEAVY -> "Lourd";
-            case SPECIAL -> "Spécial";
-            case LEADER -> "Chef";
+            case SOLDIER    -> "Soldat";
+            case HEAVY      -> "Lourd";
+            case SPECIAL    -> "Spécial";
+            case LEADER     -> "Chef";
         };
     }
 

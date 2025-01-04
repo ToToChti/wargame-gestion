@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class UnitSelection extends SelectionMenu {
     private final UnitGroup group;

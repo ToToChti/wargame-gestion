@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArmySelection extends SelectionMenu {
     private final ArrayList<Army> armies;

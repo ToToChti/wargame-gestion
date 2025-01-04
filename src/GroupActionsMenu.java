@@ -30,7 +30,7 @@ public class GroupActionsMenu extends SelectionMenu {
 
         switch (answer) {
             case 0:
-                System.out.println("|> Retour au menu précédent <|");
+                System.out.println("\n|> Retour au menu précédent <|");
                 break;
 
             case 1:
@@ -39,7 +39,10 @@ public class GroupActionsMenu extends SelectionMenu {
                 UnitTypeSelection menuTypeSelection = new UnitTypeSelection(scanner);
                 UnitType unitType = menuTypeSelection.getUnitType();
 
-                if(unitType == null) break;
+                if(unitType == null) {
+                    System.out.println("\n|> Retour au menu précédent <|");
+                    break;
+                }
 
                 // Getting unit specific type
                 SpecificTypeSelection menuSpecificTypeSelection = new SpecificTypeSelection(scanner, unitType);
@@ -47,15 +50,21 @@ public class GroupActionsMenu extends SelectionMenu {
                 InfantryType specificTypeInfantry = null;
                 VehicleType specificTypeVehicle = null;
 
-                switch (unitType) {
-                    case Infantry:
-                        specificTypeInfantry = InfantryType.valueOf(menuSpecificTypeSelection.getSpecificType());
-                        break;
-                    case Vehicle:
-                        specificTypeVehicle = VehicleType.valueOf(menuSpecificTypeSelection.getSpecificType());
-                        break;
-                    default:
-                        throw new InputMismatchException("Unrecognized specific type for unit");
+                try {
+                    switch (unitType) {
+                        case Soldat:
+                            specificTypeInfantry = InfantryType.valueOf(menuSpecificTypeSelection.getSpecificType());
+                            break;
+                        case Vehicule:
+                            specificTypeVehicle = VehicleType.valueOf(menuSpecificTypeSelection.getSpecificType());
+                            break;
+                        default:
+                            throw new InputMismatchException("Unrecognized specific type for unit");
+                    }
+                }
+
+                catch (Exception e) {
+                    break;
                 }
 
 

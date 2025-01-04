@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArmyCreationMenu extends CreationMenu {
     private String armyName;
@@ -8,7 +7,7 @@ public class ArmyCreationMenu extends CreationMenu {
     private final ArrayList<WargameInput> inputs;
 
     public ArmyCreationMenu(Scanner scanner) {
-        super(scanner, "Menu création armée");
+        super(scanner, "Création d'une nouvelle armée");
 
         final ArrayList<WargameInput> constructInputs = new ArrayList<>();
 

@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public abstract class SelectionMenu {
     public final Scanner scanner;
@@ -12,9 +11,10 @@ public abstract class SelectionMenu {
         this.options = options;
     }
 
-    private void display() {
+
+    private void display(boolean isMainMenu) {
         // Displaying title
-        System.out.printf("\n\n-----> %s <------\n\n", this.title);
+        System.out.printf("\n\n䷀䷀䷀䷀䷀䷀ %s ䷀䷀䷀䷀䷀䷀\n\n", this.title);
 
         if (this.options.isEmpty()) {
             System.out.println("Aucune donnée disponible, veuillez créer avant de sélectionner");
@@ -22,9 +22,14 @@ public abstract class SelectionMenu {
         }
 
         // Displaying options
-        System.out.println("0. Retour au menu précédent/Quitter");
+        if(isMainMenu) {
+            System.out.println("䷀ 0. Quitter");
+        } else {
+            System.out.println("䷀ 0. Retour au menu précédent");
+        }
+
         for (int i = 0; i < this.options.size(); ++i) {
-            System.out.printf("%d. %s\n", i + 1, this.options.get(i));
+            System.out.printf("䷀ %d. %s\n", i + 1, this.options.get(i));
         }
     }
 
@@ -59,7 +64,20 @@ public abstract class SelectionMenu {
 
     public void openMenu() {
         // Displaying the menu
-        display();
+        display(false);
+
+        if (this.options.isEmpty()) return;
+
+        // Waiting for user answer
+        int answer = waitSelection();
+
+        // Treat user answer
+        treatAnswer(answer);
+    }
+
+    public void openMenu(boolean isMainMenu) {
+        // Displaying the menu
+        display(isMainMenu);
 
         if (this.options.isEmpty()) return;
 

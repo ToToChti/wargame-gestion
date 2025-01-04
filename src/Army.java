@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Army {
     private final String name;
@@ -72,14 +72,14 @@ public class Army {
     }
 
     public void displayAll() {
-        String separator = "";
-        for (int i = 0; i < 20; i++) {
-            separator = separator.concat("-");
+        String separator = "\n";
+        for (int i = 0; i < 35; i++) {
+            separator = separator.concat("䷀");
         }
 
         System.out.println(separator);
-        System.out.println(name);
-        System.out.println("Fait partie de la faction : " + faction);
+        System.out.println("\nArmée : " + name);
+        System.out.println("Faction : " + faction);
         System.out.println("Point" + (maxPoint > 1 ? "s" : "") + " max : " + maxPoint);
         final int totalCost = getTotalCost();
         System.out.println("Point" + (totalCost > 1 ? "s" : "") + " utilisés : " + totalCost + "\n");

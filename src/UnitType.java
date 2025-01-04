@@ -1,4 +1,4 @@
 public enum UnitType {
-    Vehicle,
-    Infantry
+    Vehicule,
+    Soldat
 }
