@@ -49,13 +49,10 @@ public class SpecificTypeSelection extends SelectionMenu {
     }
 
     public String getSpecificType() {
-        switch (unitType) {
-            case Vehicle:
-                return vehicleType.name();
-            case Infantry:
-                return infantryType.name();
-        }
+        return switch (unitType) {
+            case Vehicle -> vehicleType.name();
+            case Infantry -> infantryType.name();
+        };
 
-        return null;
     }
 }

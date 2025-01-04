@@ -1,8 +1,4 @@
-import javax.lang.model.UnknownEntityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class GroupActionsMenu extends SelectionMenu {
     private final ArrayList<Army> armies;

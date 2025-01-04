@@ -4,11 +4,9 @@ public class UnitCreation extends CreationMenu {
     private String unitName;
     private int unitCost;
     private int transportCapacity;
-    private UnitType unitType;
-    private VehicleType vehicleType;
-    private InfantryType infantryType;
-
-    private final ArrayList<WargameInput> inputs;
+    private final UnitType unitType;
+    private final VehicleType vehicleType;
+    private final InfantryType infantryType;
 
     public UnitCreation(Scanner scanner, int maxPoints, UnitType unitType, InfantryType infantryType, VehicleType vehicleType) {
         super(scanner, "Création d'unité");
@@ -67,9 +65,7 @@ public class UnitCreation extends CreationMenu {
             }));
         }
 
-        inputs = constructInputs;
-
-        create(inputs);
+        create(constructInputs);
     }
 
     public Unit getUnit() {
