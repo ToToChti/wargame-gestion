@@ -41,14 +41,14 @@ public class ArmyActionsMenu extends SelectionMenu {
                     System.out.println("Groupe d'unité ajoutée avec succès");
 
                     // Preselect created UnitGroup
-                    new GroupActionsMenu(scanner, army, army.getGroups().size() - 1);
+                    new GroupActionsMenu(scanner, armies, selectedArmy, army.getGroups().size() - 1);
                 }
 
                 openMenu();
                 break;
 
             case 2:
-                new GroupSelection(scanner, army);
+                new GroupSelection(scanner, armies, selectedArmy);
 
                 openMenu();
                 break;

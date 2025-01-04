@@ -2,11 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GroupSelection extends SelectionMenu {
-    private final Army army;
+    private final int selectedArmy;
+    private final ArrayList<Army> armies;
 
-    public GroupSelection(Scanner scanner, Army army) {
-        super(scanner, "Sélection de du groupe d'unité", createOptions(army)        );
-        this.army = army;
+    public GroupSelection(Scanner scanner, ArrayList<Army> armies, int selectedArmy) {
+        super(scanner, "Sélection de du groupe d'unité", createOptions(armies.get(selectedArmy))        );
+        this.selectedArmy = selectedArmy;
+        this.armies = armies;
 
         this.openMenu();
     }
@@ -24,6 +26,6 @@ public class GroupSelection extends SelectionMenu {
             System.out.println("|> Retour au menu précédent <|");
             return;
         }
-        new GroupActionsMenu(scanner, army, answer - 1);
+        new GroupActionsMenu(scanner, armies, selectedArmy, answer - 1);
     }
 }

@@ -1,16 +1,19 @@
+import javax.lang.model.UnknownEntityException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GroupActionsMenu extends SelectionMenu {
-    private final Army army;
+    private final ArrayList<Army> armies;
+    private final int selectedArmy;
     private final int selectedGroup;
 
-    public GroupActionsMenu(Scanner scanner, Army army, int selectedGroup) {
-        super(scanner, "Que souhaitez-vous faire sur votre groupe d'unité \"" + army.getGroup(selectedGroup).getName() + "\" ?", createOptions());
+    public GroupActionsMenu(Scanner scanner, ArrayList<Army> armies, int selectedArmy, int selectedGroup) {
+        super(scanner, "Que souhaitez-vous faire sur votre groupe d'unité \"" + armies.get(selectedArmy).getGroup(selectedGroup).getName() + "\" ?", createOptions());
 
-        this.army = army;
+        this.armies = armies;
+        this.selectedArmy = selectedArmy;
         this.selectedGroup = selectedGroup;
         this.openMenu();
     }
@@ -27,7 +30,7 @@ public class GroupActionsMenu extends SelectionMenu {
     }
 
     protected void treatAnswer(int answer) {
-        final UnitGroup group = army.getGroup(selectedGroup);
+        final UnitGroup group = armies.get(selectedArmy).getGroup(selectedGroup);
 
         switch (answer) {
             case 0:
@@ -35,16 +38,45 @@ public class GroupActionsMenu extends SelectionMenu {
                 break;
 
             case 1:
-                System.out.println("Cas 1");
-                /*
-                UnitCreationMenu menu = new UnitCreationMenu(scanner);
-                if (menu.createUnit()) {
-                    army.add(menu.getUnit());
-                    System.out.println("Unitée ajoutée avec succès");
+
+                // Getting unit type
+                UnitTypeSelection menuTypeSelection = new UnitTypeSelection(scanner);
+                UnitType unitType = menuTypeSelection.getUnitType();
+
+                if(unitType == null) break;
+
+                // Getting unit specific type
+                SpecificTypeSelection menuSpecificTypeSelection = new SpecificTypeSelection(scanner, unitType);
+
+                InfantryType specificTypeInfantry = null;
+                VehicleType specificTypeVehicle = null;
+
+                switch (unitType) {
+                    case Infantry:
+                        specificTypeInfantry = InfantryType.valueOf(menuSpecificTypeSelection.getSpecificType());
+                        break;
+                    case Vehicle:
+                        specificTypeVehicle = VehicleType.valueOf(menuSpecificTypeSelection.getSpecificType());
+                        break;
+                    default:
+                        throw new InputMismatchException("Unrecognized specific type for unit");
+                }
+
+
+                UnitCreation menuCreationUnit = new UnitCreation(scanner, armies.get(selectedArmy).getMaxPoint() - armies.get(selectedArmy).getTotalCost(), unitType, specificTypeInfantry, specificTypeVehicle);
+                Unit newUnit = menuCreationUnit.getUnit();
+
+                if (newUnit != null) {
+                    armies.get(selectedArmy).getGroup(selectedGroup).addUnit(newUnit);
+                    System.out.println("Unité ajouté avec succès");
+                }
+
+                else {
+                    throw new IllegalArgumentException("Error while creating the unit.");
                 }
 
                 openMenu();
-                */
+
                 break;
 
             case 2:
@@ -58,7 +90,7 @@ public class GroupActionsMenu extends SelectionMenu {
                 break;
 
             case 4:
-                this.army.remove(selectedGroup);
+                this.armies.get(selectedArmy).remove(selectedGroup);
                 System.out.println("Groupe d'unité supprimé avec succès");
                 break;
 

@@ -93,4 +93,8 @@ public class Army {
 
         System.out.println(separator);
     }
+
+    public int getMaxPoint() {
+        return maxPoint;
+    }
 }
