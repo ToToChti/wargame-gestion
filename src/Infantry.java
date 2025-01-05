@@ -15,8 +15,7 @@ public class Infantry extends Unit {
         };
     }
 
-    @Override
-    public String toString() {
-        return "L'infanterie de type " + getInfantryName() + " \"" + super.getName() + "\" : " + super.getCost() + " point" + (super.getCost() > 1 ? "s" : "");
+    public void print() {
+        System.out.println("L'infanterie de type " + getInfantryName() + " \"" + super.getName() + "\" : " + super.getCost() + " point" + (super.getCost() > 1 ? "s" : ""));
     }
 }

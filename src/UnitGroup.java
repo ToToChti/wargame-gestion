@@ -54,7 +54,8 @@ public class UnitGroup {
         } else {
             System.out.println("\tListe des unités présentes :");
             for (Unit unit : units) {
-                System.out.println("\t\t" + unit);
+                System.out.print("\t\t");
+                unit.print();
             }
         }
     }
