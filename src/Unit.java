@@ -24,4 +24,8 @@ public abstract class Unit {
 
     @Override
     public abstract String toString();
+
+    public void print() {
+        System.out.print(this.toString());
+    }
 }
