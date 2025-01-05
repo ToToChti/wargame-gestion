@@ -64,16 +64,7 @@ public abstract class SelectionMenu {
     protected abstract void treatAnswer(int answer);
 
     public void openMenu() {
-        // Displaying the menu
-        display(false);
-
-        if (this.options.isEmpty()) return;
-
-        // Waiting for user answer
-        int answer = waitSelection();
-
-        // Treat user answer
-        treatAnswer(answer);
+        openMenu(false);
     }
 
     public void openMenu(boolean isMainMenu) {

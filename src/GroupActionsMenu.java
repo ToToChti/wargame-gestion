@@ -69,6 +69,8 @@ public class GroupActionsMenu extends SelectionMenu {
                             throw new InputMismatchException("Unrecognized specific type for unit");
                     }
                 } catch (Exception e) {
+                    System.out.println("\nUne erreur est survenue, le type souhaitait n'est pas disponible pour créé une unité");
+                    openMenu();
                     break;
                 }
 
@@ -80,15 +82,12 @@ public class GroupActionsMenu extends SelectionMenu {
                     if (newUnit != null) {
                         armies.get(selectedArmy).getGroup(selectedGroup).addUnit(newUnit);
                         System.out.println("Unité ajouté avec succès");
-                    }
-
-                    else {
+                    } else {
                         throw new IllegalArgumentException("Error while creating the unit.");
                     }
                 }
 
                 openMenu();
-
                 break;
 
             case 2:

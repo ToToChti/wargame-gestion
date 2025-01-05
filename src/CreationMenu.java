@@ -39,8 +39,9 @@ public class CreationMenu {
             }
 
             input = scanner.nextLine();
+            input = input.trim();
 
-            if (input.trim().isEmpty()) {
+            if (input.isEmpty()) {
                 System.out.println("Choix non valide, veuillez réessayer");
                 continue;
             }
