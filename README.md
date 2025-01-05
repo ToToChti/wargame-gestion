@@ -12,4 +12,4 @@ nécessaire de développer des applications pour aider à leur organisation.
 
 Ce mini-projet consiste à créer une application console permettant de concevoir une liste
 d'armée pour ce type de jeu. L'utilisateur pourra définir une armée avec un nom, un total de
-points, des groupes d'unités et des unités spécifiques au sein de chaque groupe.
+points, des groupes d'unités et des unités spécifiques au sein de chaque groupe. 
