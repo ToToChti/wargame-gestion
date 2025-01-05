@@ -33,12 +33,11 @@ public class Vehicle extends Unit {
         };
     }
 
-    @Override
-    public String toString() {
+    public void print() {
         String content = "Le véhicule " + getVehicleName() + " \"" + super.getName() + "\" : " + super.getCost() + " point" + (super.getCost() > 0 ? "s" : "");
         if (type == VehicleType.TRANSPORT) {
             content += ", capacité de transport : " + transportCapacity;
         }
-        return content;
+        System.out.println(content);
     }
 }

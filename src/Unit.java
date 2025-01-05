@@ -22,10 +22,5 @@ public abstract class Unit {
         return cost;
     }
 
-    @Override
-    public abstract String toString();
-
-    public void print() {
-        System.out.print(this.toString());
-    }
+    public abstract void print();
 }
