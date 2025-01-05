@@ -27,7 +27,7 @@ public class MainActionsMenu extends SelectionMenu {
                 break;
 
             case 1:
-                ArmyCreationMenu menu = new ArmyCreationMenu(scanner);
+                ArmyCreationMenu menu = new ArmyCreationMenu(scanner, armies);
                 if (menu.createArmy()) {
                     armies.add(menu.getArmy());
                     System.out.println("Armée ajouté avec succès");
@@ -46,7 +46,7 @@ public class MainActionsMenu extends SelectionMenu {
 
             case 3:
                 for (Army army : armies) {
-                    army.displayAll();
+                    army.print();
                 }
                 openMenu(true);
                 break;

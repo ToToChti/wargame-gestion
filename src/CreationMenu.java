@@ -19,7 +19,7 @@ public class CreationMenu {
 
             // Displaying inputs
             final WargameInput wargameInput = inputs.get(i);
-            System.out.printf("\n%s (q pour quitter) (%d/%d) :\n> ", wargameInput.content, i + 1, inputs.size());
+            System.out.printf("\n%s (q pour quitter) (%d/%d) :", wargameInput.content, i + 1, inputs.size());
 
             // Request input
             if (!waitInputString(wargameInput.treatInput)) return false;
@@ -32,6 +32,7 @@ public class CreationMenu {
         boolean correct = false;
 
         while (!correct) {
+            System.out.print("\n> ");
             if (!scanner.hasNextLine()) {
                 System.out.println("Choix non valide, veuillez réessayer");
                 continue;

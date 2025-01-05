@@ -43,6 +43,7 @@ public abstract class SelectionMenu {
 
             if (!scanner.hasNextInt()) {
                 System.out.println("Choix non valide, veuillez entrer un nombre.");
+                scanner.nextLine();
                 continue;
             }
 

@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class UnitSelection extends SelectionMenu {
+public class UnitDeleteSelection extends SelectionMenu {
     private final UnitGroup group;
 
-    public UnitSelection(Scanner scanner, UnitGroup group) {
+    public UnitDeleteSelection(Scanner scanner, UnitGroup group) {
         super(scanner, "Sélection de l'unité à supprimer", createOptions(group)        );
         this.group = group;
 

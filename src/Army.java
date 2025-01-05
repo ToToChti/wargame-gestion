@@ -65,13 +65,7 @@ public class Army {
         return group.get(index);
     }
 
-    public void displayGroups() {
-        for (UnitGroup group : group) {
-            group.display();
-        }
-    }
-
-    public void displayAll() {
+    public void print() {
         String separator = "\n";
         for (int i = 0; i < 35; i++) {
             separator = separator.concat("䷀");
@@ -88,7 +82,9 @@ public class Army {
             System.out.println("Aucun groupe d'unités enregistré.");
         } else {
             System.out.println("Est constitué de : ");
-            displayGroups();
+            for (UnitGroup group : group) {
+                group.print();
+            }
         }
 
         System.out.println(separator);

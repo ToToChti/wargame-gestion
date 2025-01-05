@@ -57,6 +57,5 @@ public class SpecificTypeSelection extends SelectionMenu {
         }
 
         return null;
-
     }
 }

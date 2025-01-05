@@ -45,7 +45,7 @@ public class UnitGroup {
         groupCost -= unitRemoved.getCost();
     }
 
-    public void display() {
+    public void print() {
         System.out.println("- " + name);
         System.out.println("\tCoût total : " + groupCost);
 

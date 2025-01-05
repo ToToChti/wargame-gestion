@@ -7,17 +7,24 @@ public class UnitCreation extends CreationMenu {
     private final UnitType unitType;
     private final VehicleType vehicleType;
     private final InfantryType infantryType;
+    private final ArrayList<WargameInput> constructInputs = new ArrayList<>();
 
-    public UnitCreation(Scanner scanner, int maxPoints, UnitType unitType, InfantryType infantryType, VehicleType vehicleType) {
+    public UnitCreation(Scanner scanner, int maxPoints, UnitType unitType, InfantryType infantryType, VehicleType vehicleType, ArrayList<Unit> units) {
         super(scanner, "Création d'unité");
 
         this.unitType       = unitType;
         this.vehicleType    = vehicleType;
         this.infantryType   = infantryType;
 
-        final ArrayList<WargameInput> constructInputs = new ArrayList<>();
+
 
         constructInputs.add(new WargameInput("Choisissez un nom pour votre unité", input -> {
+            boolean alreadyExists = units.stream().anyMatch(unit -> unit.getName().equalsIgnoreCase(input));
+            if (alreadyExists) {
+                System.out.println("Une unité portant ce nom existe déjà");
+                return false;
+            }
+
             this.unitName = input;
             return true;
         }));
@@ -64,8 +71,10 @@ public class UnitCreation extends CreationMenu {
                 }
             }));
         }
+    }
 
-        create(constructInputs);
+    public boolean createUnit() {
+        return create(constructInputs);
     }
 
     public Unit getUnit() {

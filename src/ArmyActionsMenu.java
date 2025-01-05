@@ -32,7 +32,7 @@ public class ArmyActionsMenu extends SelectionMenu {
                 break;
 
             case 1:
-                GroupCreationMenu menu = new GroupCreationMenu(scanner);
+                GroupCreationMenu menu = new GroupCreationMenu(scanner, army.getGroups());
                 if (menu.createGroup()) {
                     army.add(menu.getGroup());
                     System.out.println("Groupe d'unité ajoutée avec succès");
@@ -51,7 +51,7 @@ public class ArmyActionsMenu extends SelectionMenu {
                 break;
 
             case 3:
-                army.displayAll();
+                army.print();
 
                 openMenu();
                 break;
